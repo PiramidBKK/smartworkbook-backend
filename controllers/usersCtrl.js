@@ -42,6 +42,8 @@ export const registerCtrl = asyncHandler(async(req, res) =>{
 export const loginCtrl = asyncHandler(async(req, res) =>{
     const {username, password} = req.body;
     //find user by username
+    console.log("Node.js version:", process.version);
+
     const userFound = await User.findOne({
         username,
     });
@@ -66,6 +68,7 @@ export const getUserProfile = asyncHandler(async(req, res) => {
     //find user
     const user = await User.findById(req.userAuthId);
     console.log(user);
+    
     res.json({
         msg: "Welcome",
         user,

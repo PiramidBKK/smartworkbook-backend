@@ -9,6 +9,7 @@ import dvdesignRoutes from "../routes/dvdesignRoute.js";
 import dvloginRoutes from "../routes/dvloginRoute.js";
 import swdetailRoutes from "../routes/swdetailRoute.js";
 import swinterfaceRoutes from "../routes/swinterfaceRoute.js";
+import cors from 'cors';
 
 //dbConnect
 dbConnect();

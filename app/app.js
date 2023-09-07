@@ -14,7 +14,7 @@ import swinterfaceRoutes from "../routes/swinterfaceRoute.js";
 dbConnect();
 
 const app = express();
-
+app.use(cors());
 //pass incoming data
 app.use(express.json());
 

@@ -3,13 +3,15 @@ dotenv.config();
 import express from "express";
 import dbConnect from "../config/dbConnect.js";
 import { gobalErrHandler, notFound } from "../middlewares/gobalErrHandler.js";
-import userRoutes from "../routes/usersRoutes.js";
-import configRoutes from "../routes/configRoutes.js";
-import dvdesignRoutes from "../routes/dvdesignRoutes.js";
-import dvloginRoutes from "../routes/dvloginRoutes.js";
-import swdetailRoutes from "../routes/swdetailRoutes.js";
-import swinterfaceRoutes from "../routes/swinterfaceRoutes.js";
+import userRoutes from "../routes/usersRoute.js"
+import dvdesignRouter from "../routes/dvdesignRouter.js";
+import configRouter from "../routes/configRouter.js";
+import dvloginRouter from "../routes/dvloginRouter.js";
+import swdetailRouter from "../routes/swdetailRouter.js";
+import swinterfaceRouter from "../routes/swinterfaceRouter.js";
 import cors from 'cors';
+
+
 
 //dbConnect
 dbConnect();
@@ -22,11 +24,11 @@ app.use(express.json());
 
 //routes
 app.use('/api/v1/users/', userRoutes);
-app.use('/api/v1/config/', configRoutes);
-app.use('/api/v1/dvdesign/', dvdesignRoutes);
-app.use('/api/v1/dvlogin/', dvloginRoutes);
-app.use('/api/v1/swdetail/', swdetailRoutes);
-app.use('/api/v1/swinterface/', swinterfaceRoutes);
+app.use('/api/v1/config/', configRouter);
+app.use('/api/v1/dvdesign/', dvdesignRouter);
+app.use('/api/v1/dvlogin/', dvloginRouter);
+app.use('/api/v1/swdetail/', swdetailRouter);
+app.use('/api/v1/swinterface/', swinterfaceRouter);
 
 //error middleware
 app.use(gobalErrHandler);

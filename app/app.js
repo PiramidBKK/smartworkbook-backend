@@ -32,4 +32,5 @@ app.use('/api/v1/swinterface/', swinterfaceRouter);
 app.use(gobalErrHandler);
 app.use(notFound);
 
+
 export default app;

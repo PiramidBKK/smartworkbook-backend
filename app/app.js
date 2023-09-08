@@ -22,11 +22,7 @@ app.use(express.json());
 
 //routes
 app.use('/api/v1/users/', userRoutes);
-app.use('/api/v1/config/', configRoutes);
-app.use('/api/v1/dvdesign/', dvdesignRoutes);
-app.use('/api/v1/dvlogin/', dvloginRoutes);
-app.use('/api/v1/swdetail/', swdetailRoutes);
-app.use('/api/v1/swinterface/', swinterfaceRoutes);
+
 
 //error middleware
 app.use(gobalErrHandler);

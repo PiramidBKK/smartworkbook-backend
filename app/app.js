@@ -11,8 +11,6 @@ import swdetailRouter from "../routes/swdetailRouter.js";
 import swinterfaceRouter from "../routes/swinterfaceRouter.js";
 import cors from 'cors';
 
-
-
 //dbConnect
 dbConnect();
 

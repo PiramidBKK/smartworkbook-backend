@@ -1,7 +1,6 @@
 import { config } from "dotenv";
 import Config from "../model/Config.js";
 import Dvdesign from "../model/Dvdesign.js";
-
 import asyncHandler from "express-async-handler"
 
 
@@ -117,7 +116,7 @@ export const getSingleWorkbook = asyncHandler(async( req, res)=>{
 //@route /api/v1/config/projectdetail/:id
 //@access All
 
-export const updateWorkbook= asyncHandler(async( req, res)=>{
+export const updateWorkbook = asyncHandler(async( req, res)=>{
     const {projectname, locationname, filetype} = req.body;
 
     const config = await Config.findByIdAndUpdate(req.params.id, {projectname, locationname, filetype}, { new: true})

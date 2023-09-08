@@ -1,10 +1,13 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 const dbConnect = async () =>{
 
-    const MONGOURI = process.env.MONGO_URL;
-
     try{
+
+        const MONGOURI = process.env.MONGO_URL;
 
         const connected = await mongoose.connect(MONGOURI);
         

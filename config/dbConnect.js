@@ -1,15 +1,9 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv'
-
-dotenv.config();
 
 const dbConnect = async () =>{
-
     try{
 
-        const MONGOURI = process.env.MONGO_URL;
-
-        const connected = await mongoose.connect(MONGOURI);
+        const connected = await mongoose.connect(process.env.MONGO_URL);
         
         mongoose.set("strictQuery", true);
 
@@ -22,4 +16,3 @@ const dbConnect = async () =>{
 };
 
 export default dbConnect;
-//neDF3KT9us7wCEds

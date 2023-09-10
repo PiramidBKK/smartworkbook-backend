@@ -78,7 +78,6 @@ export const getAllWorkbook = asyncHandler(async( req, res)=>{
     .populate("dvlogins")
     .populate("swdetails")
     .populate("swinterfaces");
-    console.log(configDvdesign);
 
     //get all
     res.json({

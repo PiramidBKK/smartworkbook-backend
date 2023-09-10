@@ -29,6 +29,7 @@ app.use('/api/v1/swdetail/', swdetailRouter);
 app.use('/api/v1/swinterface/', swinterfaceRouter);
 
 //error middleware
+app.use(notFound);
 app.use(gobalErrHandler);
 
 

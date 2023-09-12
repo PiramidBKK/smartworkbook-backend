@@ -145,23 +145,23 @@ export const updateWorkbook = asyncHandler(async( req, res)=>{
 //@access All
 
 export const deleteWorkbook = asyncHandler(async( req, res)=>{
-    const config = await Config.findById(req.params.id)
+    const config = await Config.findByIdAndDelete(req.params.id)
     .populate("dvdesigns")
     .populate("dvlogins")
     .populate("swdetails")
     .populate("swinterfaces");
 
     await Promise.all([
-        config.dvdesigns.map(async (dvdesign) =>{
+        config.dvdesigns.map(async (Dvdesign) =>{
             await Dvdesign.remove();
         }),
-        config.swdetails.map(async(swdetail) =>{
+        config.swdetails.map(async(Swdetail) =>{
             await Swdetail.remove();
         }),
-        config.swinterfaces.map(async(swinterface) =>{
+        config.swinterfaces.map(async(Swinterface) =>{
             await Swinterface.remove();
         }),
-        config.dvlogins.map(async(dvlogin) =>{
+        config.dvlogins.map(async(Dvlogin) =>{
             await Dvlogin.remove();
         }),
 

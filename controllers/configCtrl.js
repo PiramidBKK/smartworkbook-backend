@@ -2,6 +2,10 @@ import { config } from "dotenv";
 import Config from "../model/Config.js";
 import Dvdesign from "../model/Dvdesign.js";
 import asyncHandler from "express-async-handler"
+import Dvlogin from "../model/Dvlogin.js";
+import Swdetail from "../model/Swdetail.js";
+import Swinterface from "../model/Swinterface.js";
+import { all } from "axios";
 
 
 
@@ -118,7 +122,8 @@ export const getSingleWorkbook = asyncHandler(async( req, res)=>{
 export const updateWorkbook = asyncHandler(async( req, res)=>{
     const {projectname, locationname, filetype} = req.body;
 
-    const config = await Config.findByIdAndUpdate(req.params.id, {projectname, locationname, filetype}, { new: true})
+    const config = await Config.findByIdAndUpdate(req.params.id, 
+        {projectname, locationname, filetype}, { new: true})
     .populate("dvdesigns")
     .populate("dvlogins")
     .populate("swdetails")
@@ -140,17 +145,34 @@ export const updateWorkbook = asyncHandler(async( req, res)=>{
 //@access All
 
 export const deleteWorkbook = asyncHandler(async( req, res)=>{
-    const config = await Config.findByIdAndDelete(req.params.id)
+    const config = await Config.findById(req.params.id)
     .populate("dvdesigns")
     .populate("dvlogins")
     .populate("swdetails")
     .populate("swinterfaces");
 
+    await Promise.all([
+        config.dvdesigns.map(async (dvdesign) =>{
+            await Dvdesign.remove();
+        }),
+        config.swdetails.map(async(swdetail) =>{
+            await Swdetail.remove();
+        }),
+        config.swinterfaces.map(async(swinterface) =>{
+            await Swinterface.remove();
+        }),
+        config.dvlogins.map(async(dvlogin) =>{
+            await Dvlogin.remove();
+        }),
+
+    ]);
+
+    await config.remove();
+
     //get all
     res.json({
         msg: "All Project",
         
-
     });
 });
 

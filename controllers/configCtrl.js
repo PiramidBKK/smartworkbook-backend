@@ -103,7 +103,12 @@ export const getSingleWorkbook = asyncHandler(async( req, res)=>{
     const config = await Config.findById(req.params.id)
     .populate("dvdesigns")
     .populate("dvlogins")
-    .populate("swdetails")
+    .populate({
+        path: "swdetails",
+        populate: {
+            path: "swinterfaces",
+        }
+    })
     .populate("swinterfaces");
 
     //get all

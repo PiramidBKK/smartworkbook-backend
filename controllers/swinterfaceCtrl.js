@@ -1,6 +1,8 @@
 import Swinterface from "../model/Swinterface.js";
 import asyncHandler from "express-async-handler"
 import Config from "../model/Config.js";
+import Swdetail from "../model/Swdetail.js";
+
 
 //@desc Create Switch interface
 //@route /api/v1/swinterface/addnew/:configID
@@ -9,7 +11,6 @@ import Config from "../model/Config.js";
 export const createSwInterface = asyncHandler(async(req, res) =>{
     const {
         config,
-        swname,
         port,
         connectto, 
         description, 
@@ -22,6 +23,10 @@ export const createSwInterface = asyncHandler(async(req, res) =>{
     //find Project
     const { configID } = req.params;
     const configFound = await Config.findById(configID).populate("swinterfaces");
+
+    //find swdetail
+    const { swdetailID } = req.params;
+    const swdetailFound = await Swdetail.findById(swdetailID).populate("swinterfaces");
 
     // Count the existing Switch interfaces for the same configuration
     const existingInterfacesCount = configFound.swinterfaces.length;
@@ -43,9 +48,12 @@ export const createSwInterface = asyncHandler(async(req, res) =>{
 
     //push swinterface into config
     configFound.swinterfaces.push(swinterface?._id);
+    swdetailFound.swinterfaces.push(swinterface?._id);
+
 
     //resave
     await configFound.save();
+    await swdetailFound.save();
 
     res.json({
         success: true,

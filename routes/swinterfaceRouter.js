@@ -4,7 +4,7 @@ import { isLoggedIn } from "../middlewares/isLoggedIn.js";
 
 const swinterfaceRouter = express.Router();
 
-swinterfaceRouter.post("/addnew/:configID",isLoggedIn, createSwInterface);
+swinterfaceRouter.post("/addnew/:configID/:swdetailID",isLoggedIn, createSwInterface);
 swinterfaceRouter.get("/", isLoggedIn, getAllSwInterface);
 swinterfaceRouter.get("/:id", isLoggedIn, getSingleSwInterface);
 swinterfaceRouter.put("/:id", isLoggedIn, updateSwInterface);

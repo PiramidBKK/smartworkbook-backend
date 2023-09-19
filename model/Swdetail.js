@@ -13,10 +13,14 @@ const swdetailSchema = new Schema({
         required: true
 
     },
-    port:{
-        type: Number,
-        required: true
-    },
+    swinterfaces:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "Swinterface",
+        },
+    ],
+
     hostname:{
         type: String,
         required: true

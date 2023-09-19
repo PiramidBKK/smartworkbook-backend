@@ -25,6 +25,8 @@ export const createSwdetail = asyncHandler(async(req, res) =>{
     //find project
     const {configID} = req.params;
     const configFound = await Config.findById(configID).populate("swdetails");
+    
+
 
     //check dvdetail exists
     const  existingswdetail = await Swdetail.findOne({
@@ -73,7 +75,8 @@ export const createSwdetail = asyncHandler(async(req, res) =>{
 //@access All
 
 export const getAllSwdetail = asyncHandler(async(req, res) =>{
-    const allSwdetail = await Swdetail.find();
+    const allSwdetail = await Swdetail.find().populate("swinterfaces");
+    ;
 
     res.json({
         success: true,
@@ -89,7 +92,7 @@ export const getAllSwdetail = asyncHandler(async(req, res) =>{
 //@access All
 
 export const getSingleSwdetail = asyncHandler(async(req, res) =>{
-    const singleSwdetail = await Swdetail.findById(req.params.id);
+    const singleSwdetail = await Swdetail.findById(req.params.id).populate("swinterfaces");;
 
     res.json({
         success: true,

@@ -59,12 +59,10 @@ const swdetailSchema = new Schema({
     },
     defaultgateway:{
         type: String,
-        required: true
-        
+        required: true  
     },
     remark:{
         type: String,
-        
     },
 
 },

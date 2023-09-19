@@ -4,7 +4,7 @@ import { isLoggedIn } from "../middlewares/isLoggedIn.js";
 
 const swdetailRouter = express.Router();
 
-swdetailRouter.post("/addswdetail/:configID", isLoggedIn, createSwdetail)
+swdetailRouter.post("/addnew/:configID", isLoggedIn, createSwdetail)
 swdetailRouter.get("/", isLoggedIn, getAllSwdetail)
 swdetailRouter.get("/:id", isLoggedIn, getSingleSwdetail)
 swdetailRouter.put("/:id", isLoggedIn, updateSwdetail )

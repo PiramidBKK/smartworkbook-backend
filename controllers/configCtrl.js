@@ -1,11 +1,12 @@
 import { config } from "dotenv";
 import Config from "../model/Config.js";
-import Dvdesign from "../model/Dvdesign.js";
 import asyncHandler from "express-async-handler"
+import Dvdesign from "../model/Dvdesign.js";
 import Dvlogin from "../model/Dvlogin.js";
 import Swdetail from "../model/Swdetail.js";
 import Swinterface from "../model/Swinterface.js";
-import { all } from "axios";
+
+
 
 
 
@@ -146,28 +147,18 @@ export const updateWorkbook = asyncHandler(async( req, res)=>{
 
 export const deleteWorkbook = asyncHandler(async( req, res)=>{
     const config = await Config.findByIdAndDelete(req.params.id)
-    .populate("dvdesigns")
-    .populate("dvlogins")
-    .populate("swdetails")
-    .populate("swinterfaces");
 
-    await Promise.all([
-        config.dvdesigns.map(async (Dvdesign) =>{
-            await Dvdesign.remove();
-        }),
-        config.swdetails.map(async(Swdetail) =>{
-            await Swdetail.remove();
-        }),
-        config.swinterfaces.map(async(Swinterface) =>{
-            await Swinterface.remove();
-        }),
-        config.dvlogins.map(async(Dvlogin) =>{
-            await Dvlogin.remove();
-        }),
+    const dvdesignDelete = config.dvdesigns;
+    const dvloginDelete = config.dvlogins;
+    const swdetailDelete = config.swdetails;
+    const swinterfaceDelete = config.swinterfaces;
 
-    ]);
+    await Dvdesign.deleteMany({_id: {$in: dvdesignDelete}});
+    await Dvlogin.deleteMany({_id: {$in: dvloginDelete}});
+    await Swdetail.deleteMany({_id: {$in: swdetailDelete}});
+    await Swinterface.deleteMany({_id: {$in: swinterfaceDelete}});
 
-    await config.remove();
+    
 
     //get all
     res.json({
@@ -175,9 +166,4 @@ export const deleteWorkbook = asyncHandler(async( req, res)=>{
         
     });
 });
-
-
-
-
-
 

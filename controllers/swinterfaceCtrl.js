@@ -2,14 +2,13 @@ import Swinterface from "../model/Swinterface.js";
 import asyncHandler from "express-async-handler"
 import Config from "../model/Config.js";
 
-
-
 //@desc Create Switch interface
 //@route /api/v1/swinterface/addnew/:configID
 //@access All dvdesign
 
 export const createSwInterface = asyncHandler(async(req, res) =>{
     const {
+        config,
         swname,
         port,
         connectto, 
@@ -29,12 +28,8 @@ export const createSwInterface = asyncHandler(async(req, res) =>{
     const portNumber = existingInterfacesCount + 1;
     const generatedport = `port${portNumber}`;
 
-    //check if switchname valid
-
-
     const swinterface = await Swinterface.create({
-        swname,
-        port: generatedport , 
+        port: generatedport ,
         connectto, 
         description, 
         vlanid, 
@@ -43,8 +38,7 @@ export const createSwInterface = asyncHandler(async(req, res) =>{
         remark,
         config: configFound?._id,
         user: req.userAuthId,
-        image: req.file.path
-
+        
     });
 
     //push swinterface into config

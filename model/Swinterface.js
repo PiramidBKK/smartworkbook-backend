@@ -3,18 +3,18 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const swinterfaceSchema = new Schema({
+
     user:{
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
+
     config:{
         type: mongoose.Schema.Types.ObjectId,
         required: true
 
     },
-    image:{
-        type: String,
-    },
+
     swname:{
         type: String
 
@@ -41,12 +41,10 @@ const swinterfaceSchema = new Schema({
     label:{
         type: String,
 
-
     },
     remark:{
         type: String,
     },
-
 
 
 },

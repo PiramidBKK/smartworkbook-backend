@@ -14,11 +14,10 @@ export const createDvlogin = asyncHandler(async(req, res) => {
     const configFound = await Config.findById(configID).populate('dvlogins')
 
     //check
-    const loginFound = await Dvlogin.findOne({devicename});
+    const loginFound = await Dvlogin.findOne({devicename, config: configFound?._id,});
     if(loginFound){
-        throw new error('device name already exists');
-    }
-
+        throw new Error('device name already exists');
+    };
 
     //create dvlogin
     const dvlogin = await Dvlogin.create({

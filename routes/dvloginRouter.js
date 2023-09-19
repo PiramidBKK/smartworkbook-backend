@@ -5,7 +5,7 @@ import { isLoggedIn } from "../middlewares/isLoggedIn.js";
 
 const dvloginRouter = express.Router();
 
-dvloginRouter.post("/adddvlogin/:configID" ,isLoggedIn , createDvlogin);
+dvloginRouter.post("/addnew/:configID" ,isLoggedIn , createDvlogin);
 dvloginRouter.get("/" ,isLoggedIn , getDvlogin);
 dvloginRouter.put("/:id" ,isLoggedIn , updateDvlogin);
 dvloginRouter.delete("/:id" ,isLoggedIn , deleteDvlogin);

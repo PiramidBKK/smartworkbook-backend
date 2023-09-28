@@ -15,14 +15,7 @@ const configSchema = new Schema({
 
     filetypes:{
 
-        type: [String],
-        enum: [
-            "CCTV Switch Configuration",
-            "CCTV Configuration",
-            "Network Switch Configuration",
-            "Access Point Configuration",
-            "Other"
-        ],
+        type: String,
         required: true,
     },
 

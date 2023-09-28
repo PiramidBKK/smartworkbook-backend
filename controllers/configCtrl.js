@@ -17,7 +17,7 @@ import Swinterface from "../model/Swinterface.js";
 export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
     const convertedImgs = req.files.map((file) => file.path);
 
-    const {projectname, locationname, filetype, user} = req.body;;
+    const {projectname, locationname, filetypes, user} = req.body;;
 
     //check if projectname exists
     const projectExists = await Config.findOne({projectname});
@@ -31,7 +31,7 @@ export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
     const config = await Config.create({
         projectname,
         locationname,
-        filetype,
+        filetypes,
         images: convertedImgs,
         user: req.userAuthId,        
         
@@ -72,9 +72,9 @@ export const getAllWorkbook = asyncHandler(async( req, res)=>{
     };
 
     //search by location
-    if(req.query.filetype){
+    if(req.query.filetypes){
         configQuary = configQuary.find({
-            filetype:{$regex: req.query.filetype, $options:'i'},
+            filetypes:{$regex: req.query.filetypes, $options:'i'},
         });
         
     };
@@ -126,10 +126,10 @@ export const getSingleWorkbook = asyncHandler(async( req, res)=>{
 //@access All
 
 export const updateWorkbook = asyncHandler(async( req, res)=>{
-    const {projectname, locationname, filetype} = req.body;
+    const {projectname, locationname, filetypes} = req.body;
 
     const config = await Config.findByIdAndUpdate(req.params.id, 
-        {projectname, locationname, filetype}, { new: true})
+        {projectname, locationname, filetypes}, { new: true})
     .populate("dvdesigns")
     .populate("dvlogins")
     .populate("swdetails")

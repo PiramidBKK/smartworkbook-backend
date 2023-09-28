@@ -13,7 +13,7 @@ const configSchema = new Schema({
         required: true,
     },
 
-    filetype:{
+    filetypes:{
         type: String,
         required: true,
     },

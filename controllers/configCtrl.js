@@ -40,7 +40,7 @@ export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
     //test respond
     res.json({
         msg: "config",
-        data: config,
+        config,
     });
 
 });

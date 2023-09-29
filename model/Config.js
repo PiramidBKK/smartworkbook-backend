@@ -17,11 +17,18 @@ const configSchema = new Schema({
 
         type: [String],
         enum: [
-            "CCTV Switch Configuration",
-            "CCTV Configuration",
-            "Network Switch Configuration",
-            "Access Point Configuration",
-            "Other"
+            "Network System",
+            "Firewall System",
+            "Server System",
+            "CCTV System",
+            "Telephone System",
+            "IPTV System",
+            "Internet Gateway",
+            "Clients (PC , Laptop)",
+            "WiFi System",
+            "Access Control",
+            "Digital Signage",
+            "Cabling"
         ],
         required: true,
     },

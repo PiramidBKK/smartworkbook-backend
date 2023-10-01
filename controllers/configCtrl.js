@@ -15,7 +15,7 @@ import Swinterface from "../model/Swinterface.js";
 //@access All
 
 export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
-    const convertedImgs = req.files.map((file) => file.path);
+    const convertedImgs = req.files.map((file) => file?.path);
 
     const {projectname, locationname, filetypes, user} = req.body;;
 

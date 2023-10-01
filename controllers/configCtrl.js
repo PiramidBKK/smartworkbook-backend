@@ -15,9 +15,11 @@ import Swinterface from "../model/Swinterface.js";
 //@access All
 
 export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
+
+    const {projectname, locationname, filetypes, user} = req.body;
+
     const convertedImgs = req.files.map((file) => file?.path);
 
-    const {projectname, locationname, filetypes, user} = req.body;;
 
     //check if projectname exists
     const projectExists = await Config.findOne({projectname});

@@ -80,7 +80,7 @@ export const getAllWorkbook = asyncHandler(async( req, res)=>{
         
     };
 
-    const configDvdesign = await configQuary.populate("dvdesigns")
+    const config = await configQuary.populate("dvdesigns")
     .populate("dvlogins")
     .populate("swdetails")
     .populate("swinterfaces");
@@ -88,7 +88,7 @@ export const getAllWorkbook = asyncHandler(async( req, res)=>{
     //get all
     res.json({
         status: "success",
-        configDvdesign,
+        config,
 
     });
 });

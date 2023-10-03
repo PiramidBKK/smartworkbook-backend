@@ -28,7 +28,8 @@ const configSchema = new Schema({
             "WiFi System",
             "Access Control",
             "Digital Signage",
-            "Cabling"
+            "Cabling",
+            "Other"
         ],
         required: true,
     },

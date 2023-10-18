@@ -47,10 +47,10 @@ const configSchema = new Schema({
         },
     ],
 
-    fileLabels:{
+    fileLabels:[{
         type: String,
         
-    },
+    }],
 
     dvdesigns:[
         {

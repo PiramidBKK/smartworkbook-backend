@@ -34,6 +34,7 @@ export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
         locationname,
         filetypes,
         images: convertedImgs,
+        fileLabels,
         user: req.userAuthId,        
         
     });

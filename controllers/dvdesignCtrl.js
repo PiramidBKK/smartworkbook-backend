@@ -3,9 +3,6 @@ import asyncHandler from "express-async-handler";
 import Config from "../model/Config.js";
 
 
-
-
-
 //@desc Create Device Design
 //@route /api/v1/dvdesign/addnew
 //@access All
@@ -41,7 +38,6 @@ export const createDvdesign = asyncHandler(async(req, res) =>{
         
     });
 
-    
     //push dvdesign into config
     configFound.dvdesigns.push(dvdesign?._id);
 

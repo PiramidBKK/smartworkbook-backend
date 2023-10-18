@@ -47,6 +47,11 @@ const configSchema = new Schema({
         },
     ],
 
+    fileLabels:{
+        type: String,
+        
+    },
+
     dvdesigns:[
         {
             type: mongoose.Schema.Types.ObjectId,

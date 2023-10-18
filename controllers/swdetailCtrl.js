@@ -14,6 +14,7 @@ export const createSwdetail = asyncHandler(async(req, res) =>{
         location, 
         brand, 
         model, 
+        modelimg,
         serialnumber, 
         macaddress,  
         ipaddress, 

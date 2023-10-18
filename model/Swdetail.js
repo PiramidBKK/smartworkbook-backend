@@ -41,6 +41,9 @@ const swdetailSchema = new Schema({
         required: true
 
     },
+    modelimg:{
+        type: String
+    },
     serialnumber:{
         type: String,
         required: true

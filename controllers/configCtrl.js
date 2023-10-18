@@ -20,6 +20,9 @@ export const addWorkbookCtrl = asyncHandler(async(req, res) =>{
 
     const convertedImgs = req.files.map((file) => file?.path);
 
+    //collect filenames
+    const fileLabels = req.files.map((file)=> file?.originalname);
+
     //check if projectname exists
     const projectExists = await Config.findOne({projectname});
     if(projectExists){

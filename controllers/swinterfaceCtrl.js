@@ -29,7 +29,7 @@ export const createSwInterface = asyncHandler(async(req, res) =>{
     const swdetailFound = await Swdetail.findById(swdetailID).populate("swinterfaces");
 
     // Count the existing Switch interfaces for the same configuration
-    const existingInterfacesCount = configFound.swinterfaces.length;
+    const existingInterfacesCount = swdetailFound.swinterfaces.length;
     const portNumber = existingInterfacesCount + 1;
     const generatedport = `port${portNumber}`;
 

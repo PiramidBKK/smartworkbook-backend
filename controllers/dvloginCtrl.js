@@ -61,6 +61,20 @@ export const getDvlogin = asyncHandler(async(req, res) =>{
     });
 });
 
+//@desc get all Device Login
+//@route /api/v1/dvlogin/
+//@access All
+
+export const getSingleDvlogin = asyncHandler(async(req, res) =>{
+
+    const getsingledvlogin = await Dvlogin.findById(req.params.id);
+
+    res.json({
+        status: "success",
+        getsingledvlogin
+    });
+});
+
 //@desc update Device Login
 //@route /api/v1/dvlogin/:id
 //@access All

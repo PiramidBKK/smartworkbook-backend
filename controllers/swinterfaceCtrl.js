@@ -43,6 +43,7 @@ export const createSwInterface = asyncHandler(async(req, res) =>{
         remark,
         config: configFound?._id,
         user: req.userAuthId,
+        swdetail: swdetailFound?._id
         
     });
 
